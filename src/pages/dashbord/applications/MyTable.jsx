@@ -1,7 +1,7 @@
 import { FaTrashCan } from "react-icons/fa6";
-import { CiEdit } from 'react-icons/ci'
 import { handleCustomFun } from "../../../utils/customToastify";
 import { useDeleteApplication } from "../../../hooks/usemongodbCollections";
+import UpdateAplicaction from "../../../components/modals/UpdateApplication";
 import { Link } from "react-router";
 const MyTable = ({apply}) => {
   const {mutateAsync} = useDeleteApplication()
@@ -30,10 +30,7 @@ const MyTable = ({apply}) => {
         <td className="text-nowrap space-x-4">
           {applicationStatus === "pending" && 
          <> 
-         <button 
-          className="btn btn-square text-primary">
-            <CiEdit size={24} />
-        </button>
+         <UpdateAplicaction apply={apply} />
          <button
           onClick={() => handleRemoveApplication(_id)}
             className="btn btn-square text-red-500"
@@ -47,7 +44,7 @@ const MyTable = ({apply}) => {
            <button 
             className="btn text-primary">
             Add Review
-          </button>
+         </button>
         }
         {
         applicationStatus === "pending" && paymentStatus === "unpaid" &&

@@ -174,6 +174,22 @@ export const useGetMyApplications = () => {
   return [applications, isLoading, isError]
 }
 
+export const useUpdateAplications = () => {
+   const queryClient = useQueryClient()
+   const axiosSecure = useAxiosSecure()
+   const mutation = useMutation({
+      mutationFn: async ({id, ...updateDoc}) => {
+         await axiosSecure.patch(`/applications/${id}/update/application`, updateDoc)
+      },
+      onSuccess: () =>{
+         toast.success("applications updated successfully!")
+         queryClient.invalidateQueries({queryKey: ["applications"]})
+      },
+      onError: error => toast.error(error.message)
+   })
+   return mutation
+}
+
 export const useDeleteApplication = () => {
    const axiosSecure = useAxiosSecure()
    const queryClient = useQueryClient()
