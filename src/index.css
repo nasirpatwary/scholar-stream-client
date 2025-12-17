@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap'); 
+ 
+ @import "tailwindcss";
+ @plugin "daisyui" {
+  themes: light --default, dark --prefersdark;
+ }
+body{
+  overflow-y: scroll;
+  font-family: "Rubik", sans-serif;
+}
+
+@layer components {
+  body {
+  @apply bg-white text-gray-900;
+}
+
+/* Dark mode (entire project) */
+.dark body {
+  @apply bg-[#121212] text-gray-200;
+}
+  .active{
+    @apply text-primary
+  }
+  .btn-primary{
+    @apply btn btn-primary duration-500 text-black hover:text-black/70 font-semibold w-full md:w-fit
+  }
+  .input-field{
+    @apply w-full p-2 border focus:outline-1 focus:border-primary outline-offset-2 focus:outline-primary rounded
+  }
+  .input-file{
+    @apply w-full hover:border-dashed rounded p-2 cursor-pointer transition 
+    
+  }
+  .custom-radio{
+    @apply appearance-none 
+          h-5 w-5 
+          border-4 border-gray-300 
+          checked:border-primary
+          hover:border-primary
+          rounded-full
+          transition-all
+          cursor-pointer
+  }
+
+}
+@keyframes bounceX {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(25px);
+  }
+}
+
+.bounce {
+  animation: bounceX 3s ease-in-out infinite;
+}
+
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  --color-primary: #0f7771;
+  --color-secondary: #03373D;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+
+.animate-gradient {
+  background-size: 300%;
+  -webkit-animation: animatedgradient 6s ease infinite alternate;
+  -moz-animation: animatedgradient 6s ease infinite alternate;
+  animation: animatedgradient 6s ease infinite alternate;
+}
+
+@keyframes animatedgradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
