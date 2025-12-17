@@ -173,3 +173,19 @@ export const useGetMyApplications = () => {
    })
   return [applications, isLoading, isError]
 }
+
+export const useDeleteApplication = () => {
+   const axiosSecure = useAxiosSecure()
+   const queryClient = useQueryClient()
+   const mutation = useMutation({
+      mutationFn: async (id) => {
+      await axiosSecure.delete(`/applications/${id}`)
+      },
+      onSuccess: () => {
+         toast.success("remove application successfully!")
+         queryClient.invalidateQueries({queryKey: ["applications"]})
+      },
+      onError: error => toast.error(error.message)
+   })
+  return mutation
+}
