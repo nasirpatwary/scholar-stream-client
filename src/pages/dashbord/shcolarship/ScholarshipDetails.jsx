@@ -1,17 +1,12 @@
-import { useNavigate, useParams } from "react-router"
+import { useParams } from "react-router"
 import Container from "../../../shared/Container"
-import { useGetScholarshipById, usePostApplication } from "../../../hooks/usemongodbCollections"
+import { useGetScholarshipById } from "../../../hooks/usemongodbCollections"
 import { Helmet } from "react-helmet-async"
 import LoadingSpinner from "../../../shared/LoadingSpinner"
 import ErrorPage from "../../ErrorPage"
-import { compareAsc, format } from "date-fns";
-import toast from "react-hot-toast"
-import useAuth from "../../../hooks/useAuth"
+import { format } from "date-fns";
 
 const ScholarshipDetails = () => {
-  const {user} = useAuth()
-  const navigate = useNavigate()
-  const {mutateAsync} = usePostApplication()
   const {id} = useParams()
   const [scholarship, isLoading, isError] = useGetScholarshipById(id)
   if(isLoading) return <LoadingSpinner />
@@ -33,30 +28,7 @@ const ScholarshipDetails = () => {
     applicationDeadline,
     _id
   } = scholarship || {}
-  const handleApplyScholarship = async () =>{
-      const isApplyAllowed =  compareAsc(scholarshipPostDate, applicationDeadline) === 1;
-      if(isApplyAllowed) {
-      return toast.error("The application deadline has passed.");
-      }
-      const applicationData = {
-      scholarshipId: _id,
-      userId: user?.uid,
-      userName: user?.displayName,
-      userEmail: user?.email,
-      universityName: universityName,
-      scholarshipCategory: subjectCategory,
-      degree,
-      universityCity,
-      applicationFees,
-      serviceCharge,
-      applicationStatus: "pending",
-      applicationDate: new Date(),
-      paymentStatus: "unpaid",
-      feedback: "" 
-    };
-    await mutateAsync(applicationData)
-    navigate("/dashboard/myApplications")
-  }
+  
   return (
     <>
     <Helmet>
@@ -150,7 +122,7 @@ const ScholarshipDetails = () => {
 
       {/* CTA */}
       <div className="mt-10 text-center">
-        <button onClick={handleApplyScholarship} className="btn btn-primary px-8">
+        <button className="btn btn-primary px-8">
           Apply for Scholarship
         </button>
       </div>

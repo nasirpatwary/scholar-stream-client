@@ -84,6 +84,20 @@ export const useGetScholarship = ({ search = "", subject="",
   }
 }
 
+export const useGetManangeScholarships = () => {
+   const axiosSecure = useAxiosSecure()
+   const {user} = useAuth()
+   const {data: scholarships=[], isLoading, isError } = useQuery({
+      queryKey: ["scholarships", user?.email ],
+      keepPreviousData: true,
+      queryFn: async () => {
+      const { data } = await axiosSecure.get(`/scholarships/${user.email}/manage`)
+      return data
+      }
+   })
+  return [scholarships, isLoading, isError]
+}
+
 export const useGetScholarshipById = (id) => {
    const axiosSecure = useAxiosSecure()
    const {data: scholarship={}, isLoading, isError } = useQuery({
@@ -95,23 +109,4 @@ export const useGetScholarshipById = (id) => {
       }
    })
   return [scholarship, isLoading, isError]
-}
-
-
-// applicationCollecation server to client
-
-export const usePostApplication = () =>{
-   const queryClient = useQueryClient()
-   const axiosSecure = useAxiosSecure()
-   const mutation = useMutation({
-      mutationFn: async (newApplication) => {
-         await axiosSecure.post("/applications", newApplication)
-      },
-      onSuccess: ()=> {
-         toast.success("application successfully added!")
-         queryClient.invalidateQueries({queryKey: ["applications"]})
-      },
-      onError: error => toast.error(error.message)
-   })
-   return mutation
 }
