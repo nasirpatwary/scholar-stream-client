@@ -142,3 +142,21 @@ export const useDeleteScholarship = () => {
    })
   return mutation
 }
+
+// applicationCollecation server to client
+
+export const usePostApplication = () =>{
+   const queryClient = useQueryClient()
+   const axiosSecure = useAxiosSecure()
+   const mutation = useMutation({
+      mutationFn: async (newApplication) => {
+         await axiosSecure.post("/applications", newApplication)
+      },
+      onSuccess: ()=> {
+         toast.success("application successfully added!")
+         queryClient.invalidateQueries({queryKey: ["applications"]})
+      },
+      onError: error => toast.error(error.message)
+   })
+   return mutation
+}
