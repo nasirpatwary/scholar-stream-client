@@ -3,6 +3,7 @@ import { handleCustomFun } from "../../../utils/customToastify";
 import { useDeleteApplication } from "../../../hooks/usemongodbCollections";
 import UpdateAplicaction from "../../../components/modals/UpdateApplication";
 import { Link } from "react-router";
+import AddReviewModal from "../../../components/modals/AddReviewModal";
 const MyTable = ({apply}) => {
   const {mutateAsync} = useDeleteApplication()
   const {
@@ -41,10 +42,7 @@ const MyTable = ({apply}) => {
           }
           {
           applicationStatus === "completed" && 
-           <button 
-            className="btn text-primary">
-            Add Review
-         </button>
+          <AddReviewModal apply={apply} />
         }
         {
         applicationStatus === "pending" && paymentStatus === "unpaid" &&

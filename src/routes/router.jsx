@@ -1,3 +1,4 @@
+import axios from "axios";
 import { createBrowserRouter } from "react-router";
 import Login from "../pages/auth/Login";
 import Register from "../pages/auth/Register";
@@ -5,6 +6,7 @@ import AuthLayout from "../layouts/AuthLayout";
 import DashboardLayout from "../layouts/DashboardLayout";
 import Home from "../pages/Home/Home";
 import PrivateRouter from "../private/PrivateRouter";
+import ModeratorRouter from "../private/ModeratorRouter";
 import Dashboard from "../pages/dashbord/Dashboard";
 import ErrorPage from "../pages/ErrorPage";
 import LoadingSpinner from "../shared/LoadingSpinner";
@@ -14,9 +16,10 @@ import AllScholarships from "../pages/Home/AllScholarships/AllScholarships";
 import AddScholarship from "../pages/dashbord/shcolarship/AddScholarship";
 import ManageScholarships from "../pages/dashbord/shcolarship/ManageScholarships";
 import ScholarshipDetails from "../pages/dashbord/shcolarship/ScholarshipDetails";
-import axios from "axios";
 import MainLayout from "../layouts/MainLayout";
 import MyApplications from "../pages/dashbord/applications/MyApplications";
+import ManageApplications from "../pages/dashbord/applications/ManageApplications";
+
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -54,6 +57,8 @@ export const router = createBrowserRouter([
       { path: "all/users", element: <AdminRouter><AllUsers /></AdminRouter> },
       { path: "shcolarship", element: <AdminRouter><AddScholarship /></AdminRouter> },
       { path: "manage/scholarships", element: <AdminRouter><ManageScholarships /></AdminRouter> },
+      // moderator Router
+      { path: "manage/applications", element: <ModeratorRouter><ManageApplications /></ModeratorRouter> },
     ],
   },
 ]);

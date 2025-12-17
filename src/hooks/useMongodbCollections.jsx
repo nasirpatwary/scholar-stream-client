@@ -174,6 +174,65 @@ export const useGetMyApplications = () => {
   return [applications, isLoading, isError]
 }
 
+export const useGetManageApplications = () => {
+   const axiosSecure = useAxiosSecure()
+   const {data: applications=[], isLoading, isError } = useQuery({
+      queryKey: ["applications"],
+      queryFn: async () => {
+      const { data } = await axiosSecure.get(`/applications/manage`)
+      return data
+      }
+   })
+  return [applications, isLoading, isError]
+}
+
+export const useGetApplicationsById = (id) => {
+   const axiosSecure = useAxiosSecure()
+   const {data: application={}, isLoading, isError } = useQuery({
+      queryKey: ["applications", id],
+      enabled: !!id,
+      queryFn: async () => {
+      const { data } = await axiosSecure.get(`/applications/${id}/details`)
+      return data
+      }
+   })
+  return [application, isLoading, isError]
+}
+
+export const useUpateStatus = () => {
+  const axiosSecure = useAxiosSecure()
+   const queryClient = useQueryClient()
+   const mutation = useMutation({
+      mutationFn: async ({id, ...updateDoc}) => {
+         const {data} = await axiosSecure.patch(`/applications/${id}/status`, updateDoc)
+         return data
+      },
+      onSuccess: (data)=>{
+         toast.success(`modify ${data.applicationStatus} successfully!`)
+         queryClient.invalidateQueries({queryKey: ["applications"]})
+      },
+      onError: (error) => toast.error(error.message)
+   })
+   return mutation
+}
+
+export const useUpdateFeedBack = () =>{
+   const queryClient = useQueryClient()
+   const axiosSecure = useAxiosSecure()
+   const mutation = useMutation({
+      mutationFn: async ({id, ...updateDoc}) => {
+      const {data} = await axiosSecure.patch(`/applications/${id}/feedback`, updateDoc)
+      return data
+      },
+      onSuccess: (data) =>{
+         toast.success(`i agree ${data.feedback}!`)
+         queryClient.invalidateQueries({queryKey: ["applications"]})
+      },
+      onError: error => toast.error(error.message)
+   })
+   return mutation
+}
+
 export const useUpdateAplications = () => {
    const queryClient = useQueryClient()
    const axiosSecure = useAxiosSecure()
@@ -204,4 +263,81 @@ export const useDeleteApplication = () => {
       onError: error => toast.error(error.message)
    })
   return mutation
+}
+
+
+// reviewCollections server to client
+
+export const useReviewPosted = () => {
+   const queryClient = useQueryClient()
+   const axiosSecure = useAxiosSecure()
+   const mutation = useMutation({
+      mutationFn: async (newReview) => {
+         await axiosSecure.post("/reviews", newReview)
+      },
+      onSuccess: ()=> {
+         toast.success("review successfully added!")
+         queryClient.invalidateQueries({queryKey: ["reviews"]})
+      },
+      onError: error => toast.error(error.message)
+   })
+   return mutation
+}
+
+export const useGetReviews = () => {
+   const axiosSecure = useAxiosSecure()
+   const {data: reviews = [], isLoading, isError } = useQuery({
+      queryKey: ["reviews"],
+      queryFn: async () => {
+      const { data } = await axiosSecure.get("/reviews")
+      return data
+      }
+   })
+  return [reviews, isLoading, isError]
+}
+
+export const useGetMyReview = () => {
+   const axiosSecure = useAxiosSecure()
+   const {user} = useAuth()
+   const {data: reviews=[], isLoading, isError } = useQuery({
+      queryKey: ["reviews", user?.email ],
+      keepPreviousData: true,
+      queryFn: async () => {
+      const { data } = await axiosSecure.get(`/reviews/${user.email}`)
+      return data
+      }
+   })
+  return [reviews, isLoading, isError]
+}
+
+export const useDeleteReview = () => {
+   const axiosSecure = useAxiosSecure()
+   const queryClient = useQueryClient()
+   const mutation = useMutation({
+      mutationFn: async (id) => {
+      await axiosSecure.delete(`/reviews/${id}`)
+      },
+      onSuccess: () => {
+         toast.success("remove review successfully!")
+         queryClient.invalidateQueries({queryKey: ["reviews"]})
+      },
+      onError: error => toast.error(error.message)
+   })
+  return mutation
+}
+
+export const useUpdateReviews = () => {
+   const queryClient = useQueryClient()
+   const axiosSecure = useAxiosSecure()
+   const mutation = useMutation({
+      mutationFn: async ({id, ...updateDoc}) => {
+         await axiosSecure.patch(`/reviews/${id}/update/review`, updateDoc)
+      },
+      onSuccess: () =>{
+         toast.success("reviews updated successfully!")
+         queryClient.invalidateQueries({queryKey: ["reviews"]})
+      },
+      onError: error => toast.error(error.message)
+   })
+   return mutation
 }
