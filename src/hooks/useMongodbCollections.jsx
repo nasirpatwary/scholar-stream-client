@@ -110,3 +110,19 @@ export const useGetScholarshipById = (id) => {
    })
   return [scholarship, isLoading, isError]
 }
+
+export const useDeleteScholarship = () => {
+   const axiosSecure = useAxiosSecure()
+   const queryClient = useQueryClient()
+   const mutation = useMutation({
+      mutationFn: async (id) => {
+      await axiosSecure.delete(`/scholarships/${id}`)
+      },
+      onSuccess: () => {
+         toast.success("remove scholarship successfully!")
+         queryClient.invalidateQueries({queryKey: ["scholarships"]})
+      },
+      onError: error => toast.error(error.message)
+   })
+  return mutation
+}

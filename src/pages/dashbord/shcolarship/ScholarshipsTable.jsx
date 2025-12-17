@@ -1,7 +1,13 @@
 import {format} from "date-fns"
 import { FaTrashCan } from "react-icons/fa6";
+import { useDeleteScholarship } from "../../../hooks/usemongodbCollections";
+import { handleCustomFun } from "../../../utils/customToastify";
 const ScholarshipsTable = ({scholarship}) => {
+  const {mutateAsync} = useDeleteScholarship()
   const {postedUserEmail, applicationFees, serviceCharge, scholarshipPostDate, applicationDeadline, _id} = scholarship || {}
+  const handleRemoveScholoarship = (id) => {
+    handleCustomFun(id, mutateAsync )
+  }
   return (
      <tr>
         <td className="text-nowrap">{applicationFees}</td>
@@ -11,6 +17,7 @@ const ScholarshipsTable = ({scholarship}) => {
         <td className="text-nowrap">{postedUserEmail}</td>
         <td className="text-nowrap space-x-4">
           <button
+            onClick={() => handleRemoveScholoarship(_id)}
             className="btn btn-square text-red-500"
           >
             <FaTrashCan size={18} />
