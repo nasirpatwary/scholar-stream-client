@@ -4,7 +4,7 @@ import useAuth from "./useAuth"
 import toast from "react-hot-toast"
 
 // userCollection server to client
-export const  useGetUsers = () => {
+export const useGetUsers = () => {
 const axiosSecure = useAxiosSecure()
 const {user} = useAuth()
 const { data: users = [], isLoading, isError } = useQuery({

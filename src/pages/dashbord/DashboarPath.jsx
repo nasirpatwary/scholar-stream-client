@@ -10,6 +10,7 @@ import { SiAwssecretsmanager } from "react-icons/si";
 import { FaGoogleScholar } from "react-icons/fa6";
 import { VscPreview } from "react-icons/vsc";
 import { MdPreview } from "react-icons/md";
+import { GiRamProfile } from "react-icons/gi";
 
 const DashboarPath = () => {
      const {logOut} = useAuth()
@@ -27,6 +28,14 @@ const DashboarPath = () => {
         </span>
       </NavLink>
      {role === "admin" && <>
+        <NavLink
+        to="/dashboard/admin/profile"
+        className="flex items-center gap-2 is-drawer-close:tooltip is-drawer-close:tooltip-right"
+        data-tip="My Profile"
+      >
+        <GiRamProfile  size={20} />
+        <span className="is-drawer-close:hidden">My Profile</span>
+      </NavLink>
         <NavLink
         to="/dashboard/all/users"
         className="flex items-center gap-2 is-drawer-close:tooltip is-drawer-close:tooltip-right"
@@ -55,6 +64,14 @@ const DashboarPath = () => {
      }
      {
       role === "moderator" && <>
+      <NavLink
+        to="/dashboard/moderator/profile"
+        className="flex items-center gap-2 is-drawer-close:tooltip is-drawer-close:tooltip-right"
+        data-tip="My Profile"
+      >
+        <GiRamProfile  size={20} />
+        <span className="is-drawer-close:hidden">My Profile</span>
+      </NavLink>
       <NavLink
         to="/dashboard/manage/applications"
         className="flex items-center gap-2 is-drawer-close:tooltip is-drawer-close:tooltip-right"

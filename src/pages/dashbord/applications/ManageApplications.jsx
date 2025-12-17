@@ -19,12 +19,12 @@ const ManageApplications = () => {
       {/* head */}
       <thead>
       <tr className="dark:text-gray-200">
-        <th>ApplyName</th>
+        <th>AName</th>
         <th>ApplyEmail</th>
         <th>UnName</th>
         <th>ApplyFeedback</th>
         <th>ApplyStatus</th>
-        <th>Payment Status </th>
+        <th>PaymentStatus </th>
         <th>Actions</th>
       </tr>
     </thead>

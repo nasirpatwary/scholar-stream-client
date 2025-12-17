@@ -7,8 +7,8 @@ const Payment = () => {
     const [application, isLoading, isError] = useGetApplicationsById(applyId)
     if(isLoading) return <LoadingSpinner />
     if(isError) return <ErrorPage />
- console.log(application)
-  return (
+    console.log(application)
+    return (
     <div>
       <h2></h2>
       <button

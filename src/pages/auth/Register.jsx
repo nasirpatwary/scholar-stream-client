@@ -26,7 +26,6 @@ const Register = () => {
       console.log("Form Submitted:", data);
       await createUser(data.email, data.password);
       const imgURL = await uploadToImageBB(data.photo);
-      console.log(imgURL);
       await createUserProfile(data.name, imgURL);
       //  create data base
       const userInfo = {

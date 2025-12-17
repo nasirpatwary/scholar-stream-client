@@ -36,8 +36,8 @@ const ManageTable = ({apply}) => {
   }  
   return (
      <tr>
-        <td className="text-nowrap">{userName.toLowerCase().split("md.")}</td>
-        <td className="text-nowrap">{userEmail.slice(0, 5)}...</td>
+        <td className="text-nowrap">{userName.slice(0, 1)}</td>
+        <td className="text-nowrap">{userEmail}</td>
         <td className="text-nowrap">{universityCity}</td>
         <td className="text-nowrap cursor-pointer"
         title={feedback}>{feedback.length > 11 ? feedback.slice(0, 11) : feedback}...</td>

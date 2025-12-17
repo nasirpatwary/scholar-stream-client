@@ -22,6 +22,7 @@ import ManageApplications from "../pages/dashbord/applications/ManageApplication
 import Payment from "../pages/dashbord/paymenet/Payment";
 import AllReviews from "../pages/dashbord/reviews/AllReviews";
 import MyReviews from "../pages/dashbord/reviews/MyReviews";
+import Profile from "../pages/dashbord/dashboardHome/profile/Profile";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -59,10 +60,12 @@ export const router = createBrowserRouter([
       { path: "myReviews", Component: MyReviews },
       // adminRouter
       { path: "all/users", element: <AdminRouter><AllUsers /></AdminRouter> },
+      { path: "admin/profile", element: <AdminRouter><Profile /></AdminRouter> },
       { path: "shcolarship", element: <AdminRouter><AddScholarship /></AdminRouter> },
       { path: "manage/scholarships", element: <AdminRouter><ManageScholarships /></AdminRouter> },
       // moderator Router
       { path: "manage/applications", element: <ModeratorRouter><ManageApplications /></ModeratorRouter> },
+      { path: "moderator/profile", element: <ModeratorRouter><Profile /></ModeratorRouter> },
       { path: "all/reviews", element: <ModeratorRouter><AllReviews /></ModeratorRouter> },
     ],
   },

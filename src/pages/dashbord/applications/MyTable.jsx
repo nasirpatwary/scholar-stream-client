@@ -4,6 +4,7 @@ import { useDeleteApplication } from "../../../hooks/usemongodbCollections";
 import UpdateAplicaction from "../../../components/modals/UpdateApplication";
 import { Link } from "react-router";
 import AddReviewModal from "../../../components/modals/AddReviewModal";
+import clsx from "clsx";
 const MyTable = ({apply}) => {
   const {mutateAsync} = useDeleteApplication()
   const {
@@ -25,7 +26,15 @@ const MyTable = ({apply}) => {
         <td className="text-nowrap">{scholarshipCategory}</td>
         <td className="text-nowrap">{universityCity}</td>
         <td className="text-nowrap">{applicationFees}</td>
-        <td className="text-nowrap">{applicationStatus}</td>
+        <td className="text-nowrap">
+        <span
+          className={clsx("badge", {
+          "badge-dash badge-accent": applicationStatus === "completed",
+          "badge-dash badge-warning":
+          applicationStatus === "pending",
+          "badge-dash badge-error": applicationStatus === "rejected",})}>
+          {applicationStatus}
+          </span></td>
         <td className="text-nowrap cursor-pointer"
         title={feedback}>{feedback.length > 11 ? feedback.slice(0, 11) : feedback}...</td>
         <td className="text-nowrap space-x-4">

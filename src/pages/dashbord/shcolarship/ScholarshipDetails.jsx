@@ -39,6 +39,7 @@ const ScholarshipDetails = () => {
       return toast.error("The application deadline has passed.");
       }
       const applicationData = {
+      scholarshipName,
       scholarshipId: _id,
       userId: user?.uid,
       userName: user?.displayName,
@@ -55,7 +56,7 @@ const ScholarshipDetails = () => {
       feedback: "" 
     };
     await mutateAsync(applicationData)
-    navigate("/dashboard/myApplications")
+    navigate(`/dashboard/payment/${_id}`)
   }
   return (
     <>
