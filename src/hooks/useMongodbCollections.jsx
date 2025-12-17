@@ -160,3 +160,16 @@ export const usePostApplication = () =>{
    })
    return mutation
 }
+
+export const useGetMyApplications = () => {
+   const axiosSecure = useAxiosSecure()
+   const {user} = useAuth()
+   const {data: applications=[], isLoading, isError } = useQuery({
+      queryKey: ["applications", user?.email ],
+      queryFn: async () => {
+      const { data } = await axiosSecure.get(`/applications/${user.email}/applied`)
+      return data
+      }
+   })
+  return [applications, isLoading, isError]
+}
