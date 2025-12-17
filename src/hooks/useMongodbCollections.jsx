@@ -111,6 +111,22 @@ export const useGetScholarshipById = (id) => {
   return [scholarship, isLoading, isError]
 }
 
+export const usePatchScholarship = () => {
+   const queryClient = useQueryClient()
+   const axiosSecure = useAxiosSecure()
+   const mutation = useMutation({
+      mutationFn: async ({id, ...updateDoc}) => {
+         await axiosSecure.patch(`/scholarships/${id}/update/scholarship`, updateDoc)
+      },
+      onSuccess: () =>{
+         toast.success("scholarship updated successfully!")
+         queryClient.invalidateQueries({queryKey: ["scholarships"]})
+      },
+      onError: error => toast.error(error.message)
+   })
+   return mutation
+}
+
 export const useDeleteScholarship = () => {
    const axiosSecure = useAxiosSecure()
    const queryClient = useQueryClient()

@@ -1,6 +1,7 @@
 import {format} from "date-fns"
 import { FaTrashCan } from "react-icons/fa6";
 import { useDeleteScholarship } from "../../../hooks/usemongodbCollections";
+import ModalsComponent from "../../../components/modals/ModalsComponent";
 import { handleCustomFun } from "../../../utils/customToastify";
 const ScholarshipsTable = ({scholarship}) => {
   const {mutateAsync} = useDeleteScholarship()
@@ -16,6 +17,7 @@ const ScholarshipsTable = ({scholarship}) => {
         <td className="text-nowrap">{format(new Date(applicationDeadline), "P")}</td>
         <td className="text-nowrap">{postedUserEmail}</td>
         <td className="text-nowrap space-x-4">
+          <ModalsComponent scholarship={scholarship} />
           <button
             onClick={() => handleRemoveScholoarship(_id)}
             className="btn btn-square text-red-500"
