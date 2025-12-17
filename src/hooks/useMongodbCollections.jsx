@@ -83,4 +83,15 @@ export const useGetScholarship = ({ search = "", subject="",
    totalCount: data.totalCount || 0,
   }
 }
-
+export const useGetScholarshipById = (id) => {
+   const axiosSecure = useAxiosSecure()
+   const {data: scholarship={}, isLoading, isError } = useQuery({
+      queryKey: ["scholarships", id],
+      enabled: !!id,
+      queryFn: async () => {
+      const { data } = await axiosSecure.get(`/scholarships/${id}/details`)
+      return data
+      }
+   })
+  return [scholarship, isLoading, isError]
+}

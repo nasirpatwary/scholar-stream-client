@@ -11,6 +11,7 @@ import LoadingSpinner from "../shared/LoadingSpinner";
 import AdminRouter from "../private/AdminRouter";
 import AllScholarships from "../pages/Home/AllScholarships/AllScholarships";
 import AddScholarship from "../pages/dashbord/shcolarship/AddScholarship";
+import ScholarshipDetails from "../pages/dashbord/shcolarship/ScholarshipDetails";
 import axios from "axios";
 import MainLayout from "../layouts/MainLayout";
 export const router = createBrowserRouter([
@@ -29,6 +30,7 @@ export const router = createBrowserRouter([
           </PrivateRouter>
         ),
       },
+           { path: "view/details/:id", element: <PrivateRouter><ScholarshipDetails /></PrivateRouter>},
     ],
   },
   {
