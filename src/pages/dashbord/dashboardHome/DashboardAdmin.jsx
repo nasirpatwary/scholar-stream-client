@@ -10,7 +10,7 @@ const DashboardAdmin = () => {
   return (
     <>
     <title>Dashboard Admin || Page</title>
-    <div className="mt-12 px-4">
+    <div className="mt-12 px-4 space-y-12">
     <div className="grid md:grid-cols-3 gap-6">
       {/* Total Users */}
       <div className="rounded-xl shadow p-6 border border-gray-400 dark:bg-gray-900">
