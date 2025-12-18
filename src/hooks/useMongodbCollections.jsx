@@ -353,3 +353,15 @@ export const useGetAminStats = () =>{
    })
    return [adminStats, isLoading, isError]
 }
+
+export const useGetChartData = () =>{
+   const axiosSecure = useAxiosSecure()
+   const {data: chartData = [], isLoading, isError} = useQuery({
+      queryKey: ["chart-data"],
+      queryFn: async () => {
+         const {data} = await axiosSecure.get("/application-chart-data")
+         return data
+      }
+   })
+   return [chartData, isLoading, isError]
+}
