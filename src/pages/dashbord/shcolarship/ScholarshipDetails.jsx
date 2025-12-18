@@ -34,6 +34,7 @@ const ScholarshipDetails = () => {
     _id
   } = scholarship || {}
   const handleApplyScholarship = async () =>{
+    try{
       const isApplyAllowed =  compareAsc(scholarshipPostDate, applicationDeadline) === 1;
       if(isApplyAllowed) {
       return toast.error("The application deadline has passed.");
@@ -56,7 +57,24 @@ const ScholarshipDetails = () => {
       feedback: "" 
     };
     await mutateAsync(applicationData)
-    navigate(`/dashboard/payment/${_id}`)
+    navigate(`/dashboard/payment/${_id}`, { state: {
+      scholarshipName,
+      scholarshipId: _id,
+      userId: user?.uid,
+      userName: user?.displayName,
+      userEmail: user?.email,
+      universityName: universityName,
+      scholarshipCategory: subjectCategory,
+      degree,
+      universityCity,
+      applicationFees,
+      serviceCharge,
+      },})}
+       catch (error) {
+    console.error(error);
+    toast.error("Failed to apply scholarship. Please try again.");
+  }
+
   }
   return (
     <>

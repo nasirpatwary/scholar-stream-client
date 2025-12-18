@@ -23,6 +23,8 @@ import Payment from "../pages/dashbord/paymenet/Payment";
 import AllReviews from "../pages/dashbord/reviews/AllReviews";
 import MyReviews from "../pages/dashbord/reviews/MyReviews";
 import Profile from "../pages/dashbord/dashboardHome/profile/Profile";
+import PaymentSuccess from "../pages/dashbord/paymenet/PaymentSuccess";
+import PaymentConcelled from "../pages/dashbord/paymenet/PaymentConcelled";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -57,6 +59,8 @@ export const router = createBrowserRouter([
       { index: true, Component: Dashboard  },
       { path: "myApplications", Component: MyApplications },
       { path: "payment/:applyId", Component: Payment },
+      { path: "payment-success", Component: PaymentSuccess },
+      { path: "payment-cancelled", Component: PaymentConcelled },
       { path: "myReviews", Component: MyReviews },
       // adminRouter
       { path: "all/users", element: <AdminRouter><AllUsers /></AdminRouter> },

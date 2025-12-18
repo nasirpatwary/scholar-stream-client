@@ -153,7 +153,7 @@ export const usePostApplication = () =>{
          await axiosSecure.post("/applications", newApplication)
       },
       onSuccess: ()=> {
-         toast.success("application successfully added!")
+         toast.success("Application submitted successfully!");
          queryClient.invalidateQueries({queryKey: ["applications"]})
       },
       onError: error => toast.error(error.message)

@@ -35,6 +35,13 @@ const MyTable = ({apply}) => {
           "badge-dash badge-error": applicationStatus === "rejected",})}>
           {applicationStatus}
           </span></td>
+        <td className="text-nowrap">
+        <span
+          className={clsx("badge", {
+          "badge-soft badge-success": paymentStatus === "paid",
+          "badge-soft badge-error": paymentStatus === "unpaid",})}>
+          {paymentStatus}
+          </span></td>
         <td className="text-nowrap cursor-pointer"
         title={feedback}>{feedback.length > 11 ? feedback.slice(0, 11) : feedback}...</td>
         <td className="text-nowrap space-x-4">

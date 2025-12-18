@@ -1,4 +1,3 @@
-import { format } from "date-fns";
 import { ButtonComponent } from "../../../shared/ButtonComponent";
 const AllScholarshipsCard = (
     { 
