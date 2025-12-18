@@ -341,3 +341,15 @@ export const useUpdateReviews = () => {
    })
    return mutation
 }
+
+export const useGetAminStats = () =>{
+   const axiosSecure = useAxiosSecure()
+   const {data: adminStats = {}, isLoading, isError} = useQuery({
+      queryKey: ["admin-stats"],
+      queryFn: async () => {
+         const {data} = await axiosSecure.get("/admin-stats")
+         return data
+      }
+   })
+   return [adminStats, isLoading, isError]
+}

@@ -1,9 +1,11 @@
+import ManageApplications from "../applications/ManageApplications"
 
 const DashboardModerator = () => {
   return (
-    <div>
-      <title>Dashboard Moderator</title>
-    </div>
+    <>
+      <title>Dashboard Moderator || Page</title>
+      <ManageApplications />
+   </>
   )
 }
 

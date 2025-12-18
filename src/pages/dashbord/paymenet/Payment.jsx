@@ -59,6 +59,7 @@ const Payment = () => {
 
   return (
     <div className="px-4">
+      <title>Payment || Page</title>
       <h2>University Name: {universityName}</h2>
 
       <button

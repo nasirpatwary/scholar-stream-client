@@ -2,6 +2,8 @@ import UpdateProfile from "../../../../components/modals/UpdateProfile";
 
 const ModeratorProfile = ({ user }) => {
   return (
+    <>
+    <title>Moderator Profile</title>
     <div className="max-w-xl mx-auto flex flex-col items-center bg-white dark:bg-gray-900 shadow rounded-b-lg p-6">
       <h2 className="text-2xl font-bold mb-4 text-primary">
         🛡️ Moderator Profile
@@ -20,6 +22,7 @@ const ModeratorProfile = ({ user }) => {
         <p><strong>Joined:</strong> {user?.metadata?.creationTime.split("GMT")}</p>
       </div>
     </div>
+    </>
   );
 };
 

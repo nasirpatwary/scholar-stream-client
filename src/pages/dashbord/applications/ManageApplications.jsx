@@ -10,7 +10,7 @@ const ManageApplications = () => {
     if(isError) return <ErrorPage />
   return (
      <>
-    <title>My Applications || Scholarship</title>
+    <title>Manage Applications || Scholarship</title>
     <div className="px-4">
       {
         applications.length < 1 ? <NoDataAvailable title="applications" subtitle="But don’t worry — you can add a new applications now and help students discover valuable funding opportunities through our platform." />:

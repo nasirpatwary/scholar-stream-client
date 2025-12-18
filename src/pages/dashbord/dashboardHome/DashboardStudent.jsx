@@ -1,9 +1,13 @@
+import MyApplications from "../applications/MyApplications"
 
 const DashboardStudent = () => {
   return (
-    <div>
+    <>
       <title>Dashboard Student</title>
-    </div>
+      <div>
+        <MyApplications />
+      </div>
+    </>
   )
 }
 

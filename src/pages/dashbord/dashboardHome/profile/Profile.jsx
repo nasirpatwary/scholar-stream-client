@@ -14,7 +14,7 @@ const Profile = () => {
     return <ModeratorProfile user={user} />;
   }
 
-  return <p>Unauthorized</p>;
+  return <>Unauthorized</>;
 };
 
 export default Profile;
