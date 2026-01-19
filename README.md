@@ -1,16 +1,44 @@
-# React + Vite
+# 🎓 ScholarStream – Online Learning Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ScholarStream is a modern, responsive educational platform built with React, designed to connect students with top-tier courses and resources.
 
-Currently, two official plugins are available:
+[🔗 Live Site](https://scholar-stream-link.com) | [🎬 Demo Video](https://your-video-link.com)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+### 📸 Project Interface
+<p align="center">
+  <img src="scholar-stream-screenshot.png" width="100%" alt="ScholarStream Home" />
+</p>
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+### 🚀 Core Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Dynamic Routing:** Utilized `react-router` for smooth, client-side navigation and dynamic user dashboards.
+- **Search & Filter:** Advanced filtering system allowing students to find courses by category, ratings, and price range.
+- **Course Enrollment:** Integrated a seamless enrollment flow with real-time updates using React State Management.
+- **User Dashboard:** Separate role-based dashboards for Students and Instructors.
+
+---
+
+### 🛠 Technologies & Tools
+
+**Frontend:**
+- ![React](https://img.shields.io/badge/-React-61DAFB?logo=react&logoColor=white)
+- ![Tailwind CSS](https://img.shields.io/badge/-Tailwind-38B2AC?logo=tailwind-css&logoColor=white)
+- ![React Router](https://img.shields.io/badge/-React_Router-CA4245?logo=react-router&logoColor=white)
+
+**Backend & Auth:**
+- ![Firebase](https://img.shields.io/badge/-Firebase-FFCA28?logo=firebase&logoColor=black) (Authentication & Hosting)
+- ![Node.js](https://img.shields.io/badge/-Node.js-339933?logo=node.js&logoColor=white)
+- ![MongoDB](https://img.shields.io/badge/-MongoDB-47A248?logo=mongodb&logoColor=white)
+---
+
+### 💻 Local Setup Guide
+
+Follow these steps to get this project running on your local machine:
+
+1. **Clone the project:**
+   ```bash
+   git clone https://github.com/nasirpatwary/scholar-stream-client
