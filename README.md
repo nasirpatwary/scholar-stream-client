@@ -2,13 +2,13 @@
 
 ScholarStream is a modern, responsive educational platform built with React, designed to connect students with top-tier courses and resources.
 
-[🔗 Live Site](https://scholar-stream-link.com) | [🎬 Demo Video](https://your-video-link.com)
+[🔗 Live Site](https://scholarstream-2cf8d.web.app) | [🎬 Demo Video](https://your-video-link.com)
 
 ---
 
 ### 📸 Project Interface
 <p align="center">
-  <img src="scholar-stream-screenshot.png" width="100%" alt="ScholarStream Home" />
+  <img src="Screenshot.png" width="100%" alt="ScholarStream Home" />
 </p>
 
 ---
